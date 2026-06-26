@@ -205,7 +205,7 @@ return [
             'coordinacion' => [
                 'tipo'  => 'text',
                 'label' => 'Coordinación',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
             ],
             'epilepsia' => [
                 'tipo'  => 'bool',
@@ -227,13 +227,13 @@ return [
             'deterioro_escala' => [
                 'tipo'  => 'text',
                 'label' => 'Escala aplicada',
-                'col'   => 'col-md-4',
+                'col'   => 'col-md-12',
                 'placeholder' => 'Ej. MoCA, MMSE',
             ],
             'deterioro_puntaje' => [
                 'tipo'  => 'number',
                 'label' => 'Puntaje',
-                'col'   => 'col-md-2',
+                'col'   => 'col-md-12',
                 'min'   => 0,
                 'max' => 30,
             ],
@@ -373,7 +373,7 @@ return [
             'numero_medicamentos' => [
                 'tipo'  => 'number',
                 'label' => 'N.º de medicamentos',
-                'col'   => 'col-md-3',
+                'col'   => 'col-md-6',
                 'min'   => 0,
                 'max' => 30,
                 'onchange' => 'App.geri.checkPolifarmacia(this.value)',
@@ -393,7 +393,7 @@ return [
             'cuidador_primario' => [
                 'tipo'  => 'text',
                 'label' => 'Cuidador primario',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
             ],
             'vive_solo' => [
                 'tipo'  => 'bool',
@@ -403,7 +403,7 @@ return [
             'tipo_vivienda' => [
                 'tipo'  => 'text',
                 'label' => 'Tipo de vivienda',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
             ],
             'sindrome_fragilidad' => [
                 'tipo'  => 'bool',
