@@ -28,6 +28,10 @@ $tipoCfg = match($paciente->tipo_paciente) {
 'Geriátrico' => ['c'=>'#16a34a','i'=>'fa-person-cane'],
 default => ['c'=>'#64748b','i'=>'fa-user'],
 };
+
+// Tipos como 'Otro' no tienen campos de subtipo: el paso 4 no aplica.
+$tieneExtension = ! empty($cfg['campos']);
+$totalPasos = $tieneExtension ? 4 : 3;
 @endphp
 
 {{-- Barra de progreso pegajosa bajo el top-bar --}}
@@ -49,11 +53,13 @@ default => ['c'=>'#64748b','i'=>'fa-user'],
             <span class="wstep-label">Diagnóstico</span>
             <span class="wstep-sub">Plan y pronóstico</span>
         </li>
+        @if($tieneExtension)
         <li class="wstep" data-step="4" onclick="App.hcWizard.go(4)">
             <span class="wstep-num">4</span>
             <span class="wstep-label">{{ $cfg['ui']['titulo'] ?? 'Extensión' }}</span>
             <span class="wstep-sub">Específico del tipo</span>
         </li>
+        @endif
     </ul>
 </div>
 @endsection
@@ -77,7 +83,7 @@ default => ['c'=>'#64748b','i'=>'fa-user'],
     </div>
 </div>
 
-<form id="hc-form" data-paciente="{{ $paciente->id_paciente }}" novalidate>
+<form id="hc-form" data-paciente="{{ $paciente->id_paciente }}" data-total="{{ $totalPasos }}" novalidate>
     @csrf
 
     {{-- ═══════════════ PASO 1: ANTECEDENTES ═══════════════ --}}
@@ -354,6 +360,7 @@ default => ['c'=>'#64748b','i'=>'fa-user'],
     </div>
 
     {{-- ═══════════════ PASO 4: EXTENSIÓN DINÁMICA ═══════════════ --}}
+    @if($tieneExtension)
     <div class="step-panel" data-panel="4">
         <div class="ext-panel {{ $cfg['ui']['clase'] }}">
             <div class="ext-title">
@@ -371,6 +378,7 @@ default => ['c'=>'#64748b','i'=>'fa-user'],
             </div>
         </div>
     </div>
+    @endif
 
     {{-- Barra de navegación --}}
     <div class="nav-bar">

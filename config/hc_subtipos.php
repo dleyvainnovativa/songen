@@ -91,8 +91,9 @@ return [
             'ayuno_horas' => [
                 'tipo'  => 'number',
                 'label' => 'Ayuno (horas)',
-                'col'   => 'col-md-3',
-                'min'   => 0, 'max' => 48,
+                'col'   => 'col-md-6',
+                'min'   => 0,
+                'max' => 48,
             ],
             'profilaxis_antibiotica' => [
                 'tipo'  => 'bool',
@@ -103,7 +104,7 @@ return [
             'profilaxis_detalle' => [
                 'tipo'  => 'text',
                 'label' => 'Detalle profilaxis',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
                 'oculto' => true,
                 'placeholder' => 'Antibiótico, dosis y vía',
             ],
@@ -121,7 +122,7 @@ return [
             'coagulopatia_detalle' => [
                 'tipo'  => 'text',
                 'label' => 'Detalle coagulopatía',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
                 'oculto' => true,
             ],
             'observaciones' => [
@@ -154,7 +155,8 @@ return [
                 'tipo'  => 'scale',
                 'label' => 'Escala de Glasgow',
                 'col'   => 'col-md-4',
-                'min'   => 3, 'max' => 15,
+                'min'   => 3,
+                'max' => 15,
                 'ranges' => [
                     [13, 15, '✓ Leve (13–15)'],
                     [9, 12, '⚠ Moderado (9–12)'],
@@ -214,7 +216,7 @@ return [
             'epilepsia_detalle' => [
                 'tipo'  => 'text',
                 'label' => 'Detalle epilepsia',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
                 'oculto' => true,
             ],
             'deterioro_cognitivo' => [
@@ -232,7 +234,8 @@ return [
                 'tipo'  => 'number',
                 'label' => 'Puntaje',
                 'col'   => 'col-md-2',
-                'min'   => 0, 'max' => 30,
+                'min'   => 0,
+                'max' => 30,
             ],
             'cefalea_cronica' => [
                 'tipo'  => 'bool',
@@ -248,7 +251,7 @@ return [
             'ictus_detalle' => [
                 'tipo'  => 'text',
                 'label' => 'Detalle ictus',
-                'col'   => 'col-md-6',
+                'col'   => 'col-md-12',
                 'oculto' => true,
             ],
             'observaciones' => [
@@ -281,7 +284,8 @@ return [
                 'tipo'  => 'scale',
                 'label' => 'Índice de Barthel (AVD)',
                 'col'   => 'col-md-4',
-                'min'   => 0, 'max' => 100,
+                'min'   => 0,
+                'max' => 100,
                 'ranges' => [
                     [0, 20, 'Dependencia total'],
                     [21, 60, 'Dependencia severa'],
@@ -294,7 +298,8 @@ return [
                 'tipo'  => 'scale',
                 'label' => 'Escala de Lawton (AIVD)',
                 'col'   => 'col-md-4',
-                'min'   => 0, 'max' => 8,
+                'min'   => 0,
+                'max' => 8,
                 'ranges' => [
                     [0, 1, 'Dependencia total'],
                     [2, 3, 'Dependencia severa'],
@@ -307,13 +312,15 @@ return [
                 'tipo'  => 'number',
                 'label' => 'Tinetti — Marcha',
                 'col'   => 'col-md-2',
-                'min'   => 0, 'max' => 12,
+                'min'   => 0,
+                'max' => 12,
             ],
             'escala_tinetti_equilibrio' => [
                 'tipo'  => 'number',
                 'label' => 'Tinetti — Equilibrio',
                 'col'   => 'col-md-2',
-                'min'   => 0, 'max' => 16,
+                'min'   => 0,
+                'max' => 16,
             ],
             'riesgo_caidas' => [
                 'tipo'  => 'select',
@@ -329,7 +336,8 @@ return [
                 'tipo'  => 'scale',
                 'label' => 'Mini-Mental (MMSE)',
                 'col'   => 'col-md-4',
-                'min'   => 0, 'max' => 30,
+                'min'   => 0,
+                'max' => 30,
                 'ranges' => [
                     [0, 9, 'Deterioro severo'],
                     [10, 18, 'Deterioro moderado'],
@@ -341,7 +349,8 @@ return [
                 'tipo'  => 'scale',
                 'label' => 'Depresión (Yesavage)',
                 'col'   => 'col-md-4',
-                'min'   => 0, 'max' => 15,
+                'min'   => 0,
+                'max' => 15,
                 'ranges' => [
                     [0, 4, 'Normal'],
                     [5, 9, 'Depresión leve'],
@@ -358,13 +367,15 @@ return [
                 'tipo'  => 'number',
                 'label' => 'Puntaje nutricional',
                 'col'   => 'col-md-2',
-                'min'   => 0, 'max' => 30,
+                'min'   => 0,
+                'max' => 30,
             ],
             'numero_medicamentos' => [
                 'tipo'  => 'number',
                 'label' => 'N.º de medicamentos',
                 'col'   => 'col-md-3',
-                'min'   => 0, 'max' => 30,
+                'min'   => 0,
+                'max' => 30,
                 'onchange' => 'App.geri.checkPolifarmacia(this.value)',
                 'badge' => 'poly-badge',
             ],
@@ -421,6 +432,31 @@ return [
                 'rows'  => 2,
             ],
         ],
+    ],
+
+    /*
+    |----------------------------------------------------------------------
+    | OTRO  →  sin extensión
+    |----------------------------------------------------------------------
+    |
+    | Paciente genérico. No tiene tabla hija ni campos de subtipo: el paso 4
+    | del wizard no aplica. 'tabla', 'modelo' y 'fk' van en null para que el
+    | servicio sepa que no debe escribir ninguna extensión, y 'campos' vacío
+    | para que la validación y el render no generen nada.
+    |
+    */
+    'Otro' => [
+        'tabla'  => null,
+        'modelo' => null,
+        'fk'     => null,
+        'pk'     => null,
+        'ui'     => [
+            'clase'  => 'otro',
+            'icono'  => 'fa-user',
+            'color'  => '#64748b',
+            'titulo' => 'Sin extensión',
+        ],
+        'campos' => [],
     ],
 
 ];

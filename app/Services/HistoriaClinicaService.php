@@ -52,15 +52,18 @@ class HistoriaClinicaService
             );
 
             // 2. Hijo: extensión del subtipo, resuelta por config.
-            $modelo = $cfg['modelo'];
-            $fk     = $cfg['fk'];
+            //    Si el tipo no tiene extensión (p. ej. 'Otro'), se omite.
+            if (! empty($cfg['modelo']) && ! empty($cfg['fk'])) {
+                $modelo = $cfg['modelo'];
+                $fk     = $cfg['fk'];
 
-            $modelo::updateOrCreate(
-                [$fk => $historia->id_historia],
-                array_merge($this->limpiarSubtipo($datosSubtipo, $cfg), [
-                    $fk => $historia->id_historia,
-                ])
-            );
+                $modelo::updateOrCreate(
+                    [$fk => $historia->id_historia],
+                    array_merge($this->limpiarSubtipo($datosSubtipo, $cfg), [
+                        $fk => $historia->id_historia,
+                    ])
+                );
+            }
 
             return $historia->fresh();
         });

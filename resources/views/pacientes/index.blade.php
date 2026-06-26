@@ -9,7 +9,7 @@
 --}}
 @extends('main')
 
-@section('title', 'Pacientes · Songen')
+@section('title', 'Pacientes · Fisio Clínica')
 
 @section('content')
 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
@@ -38,7 +38,7 @@
                 <label class="form-label">Tipo</label>
                 <select name="tipo" class="form-select">
                     <option value="">Todos los tipos</option>
-                    @foreach(['Quirúrgico', 'Neurológico', 'Geriátrico'] as $t)
+                    @foreach(['Quirúrgico', 'Neurológico', 'Geriátrico', 'Otro'] as $t)
                     <option value="{{ $t }}" @selected($tipo===$t)>{{ $t }}</option>
                     @endforeach
                 </select>

@@ -94,27 +94,6 @@ a { color: var(--teal-dark); }
     top: 0;
     z-index: 1030;
 }
-/* .top-bar {
-    background: #fff;
-    border-bottom: 1px solid var(--border);
-    padding: 0 1.5rem;
-    height: 60px;
-    gap: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1030;
-} */
-/* .top-bar-div {
-    display: flex;
-    height: 60px;
-    top: 0;
-    z-index: 1030;
-    align-items: center;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-
-} */
 
 .top-bar-left { flex-shrink: 0; }
 .top-bar-right { margin-left: auto; flex-shrink: 0; }
@@ -752,9 +731,7 @@ a { color: var(--teal-dark); }
 
 /* Tablets y abajo: nav primaria → hamburguesa + offcanvas */
 @media (max-width: 768px) {
-    /* .top-bar { padding: 0 0rem; gap: 0rem; } */
     .top-bar { padding: 0 1rem; gap: .5rem; }
-    /* .top-bar-div { padding: 0 1rem; gap: .5rem; } */
     .page-body { padding: 1.5rem 1rem 3rem; }
 
     .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
@@ -775,7 +752,8 @@ a { color: var(--teal-dark); }
     /* Logo un poco más chico para ganar espacio */
     .brand-logo { height: 30px; }
 
-    .sv-grid, .bool-grid { grid-template-columns: 1fr 1fr; }
+    .sv-grid{ grid-template-columns: 1fr 1fr; }
+    /* .bool-grid { grid-template-columns: 1fr 1fr; } */
     #toast-container { right: .75rem; left: .75rem; min-width: 0; }
     .wstep-sub, .wstep-label { display: none; }
 
@@ -1013,7 +991,8 @@ a { color: var(--teal-dark); }
 /* ── SELECTOR DE TIPO DE PACIENTE (tarjetas) ────────────────────────────── */
 .tipo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
     gap: .75rem;
 }
 
@@ -1050,6 +1029,7 @@ a { color: var(--teal-dark); }
 .tipo-card-qx i:first-child    { color: var(--qx-c); }
 .tipo-card-neuro i:first-child { color: var(--nr-c); }
 .tipo-card-geri i:first-child  { color: var(--gr-c); }
+.tipo-card-otro i:first-child  { color: var(--slate-mid); }
 
 .tipo-card-qx:hover,
 .tipo-card-qx.selected    { border-color: var(--qx-c); background: var(--qx-p); }
@@ -1057,11 +1037,16 @@ a { color: var(--teal-dark); }
 .tipo-card-neuro.selected { border-color: var(--nr-c); background: var(--nr-p); }
 .tipo-card-geri:hover,
 .tipo-card-geri.selected  { border-color: var(--gr-c); background: var(--gr-p); }
+.tipo-card-otro:hover,
+.tipo-card-otro.selected  { border-color: var(--slate-mid); background: var(--slate-light); }
 
 .tipo-card.selected .tipo-check { opacity: 1; }
 .tipo-card-qx.selected .tipo-check    { color: var(--qx-c); }
 .tipo-card-neuro.selected .tipo-check { color: var(--nr-c); }
 .tipo-card-geri.selected .tipo-check  { color: var(--gr-c); }
+.tipo-card-otro.selected .tipo-check  { color: var(--slate-mid); }
+
+.tipo-info-otro { background: var(--slate-light); border-color: var(--border); color: var(--slate); }
 
 /* Estado bloqueado (ya tiene historia clínica) */
 .tipo-grid-locked .tipo-card { cursor: not-allowed; }
@@ -1332,6 +1317,85 @@ a { color: var(--teal-dark); }
 
 .audit-card { padding: .85rem 1rem; }
 
+/* ── DOCUMENTOS ─────────────────────────────────────────────────────────── */
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: 1.5rem 1rem;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--slate-bg);
+    cursor: pointer;
+    text-align: center;
+    transition: border-color .15s, background .15s;
+}
+.dropzone:hover, .dropzone.dragging { border-color: var(--teal); background: var(--teal-pale); }
+.dropzone.has-file { border-style: solid; border-color: var(--teal); background: var(--teal-pale); }
+.dropzone-input { display: none; }
+.dropzone-icon { font-size: 1.6rem; color: var(--slate-mid); }
+.dropzone.has-file .dropzone-icon { color: var(--teal); }
+.dropzone-text { font-size: .85rem; font-weight: 600; color: var(--slate); word-break: break-all; }
+.dropzone-hint { font-size: .72rem; color: var(--slate-mid); }
+
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: .85rem;
+}
+.doc-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color .15s, box-shadow .15s;
+}
+.doc-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); }
+
+.doc-card-main {
+    display: flex;
+    gap: .75rem;
+    padding: .9rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    align-items: flex-start;
+}
+.doc-icon {
+    width: 42px; height: 42px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.doc-icon-file { background: #fef2f2; color: var(--danger); }
+.doc-icon-img  { background: #ecfeff; color: var(--info); }
+
+.doc-info { min-width: 0; flex: 1; }
+.doc-title {
+    font-size: .88rem; font-weight: 600; color: var(--slate);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.doc-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
+    font-size: .72rem; color: var(--slate-mid); margin-top: .2rem;
+}
+.doc-cat {
+    background: var(--teal-pale); color: var(--teal-dark);
+    border: 1px solid var(--teal-light);
+    padding: .05rem .45rem; border-radius: 99px; font-weight: 600;
+}
+.doc-sub { font-size: .7rem; color: var(--slate-mid); margin-top: .25rem; }
+
+.doc-delete {
+    position: absolute;
+    top: .5rem; right: .5rem;
+}
+.doc-card .doc-delete { opacity: 0; transition: opacity .15s; }
+.doc-card:hover .doc-delete { opacity: 1; }
+@media (hover: none) { .doc-card .doc-delete { opacity: 1; } }
+
 /* ── PAGINACIÓN (Bootstrap 5 con tema teal) ─────────────────────────────── */
 .pagination {
     display: flex;
@@ -1449,6 +1513,6 @@ a { color: var(--teal-dark); }
     .stats-grid { grid-template-columns: 1fr; }
     .print-sheet { padding: 1.5rem; }
     .tipo-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }

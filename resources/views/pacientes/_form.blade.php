@@ -43,6 +43,11 @@ $old = fn($campo, $def = '') => old($campo, $p->$campo ?? $def);
     'icono'=> 'fa-person-cane',
     'info' => 'Se activará la Valoración Geriátrica Integral: Barthel, Lawton, Tinetti y detección de polifarmacia.',
     ],
+    'Otro' => [
+    'cls' => 'otro',
+    'icono'=> 'fa-user',
+    'info' => 'Paciente genérico sin extensión clínica especializada. La historia clínica tendrá los apartados generales únicamente.',
+    ],
     ];
     $tipoSel = $old('tipo_paciente');
     @endphp
@@ -322,7 +327,7 @@ $old = fn($campo, $def = '') => old($campo, $p->$campo ?? $def);
         </a>
         <button type="submit" class="btn-next" id="btn-guardar">
             <i class="fa-solid fa-floppy-disk"></i>
-            {{ $esEdicion ? 'Guardar cambios' : 'Registrar paciente' }}
+            {{ $esEdicion ? 'Guardar' : 'Registrar paciente' }}
         </button>
     </div>
 </form>

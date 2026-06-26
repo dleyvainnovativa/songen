@@ -9,7 +9,7 @@
 --}}
 @extends('main')
 
-@section('title', $paciente->nombre_completo . ' · Songen')
+@section('title', $paciente->nombre_completo . ' · Fisio Clínica')
 
 @section('content')
 @php
@@ -121,6 +121,22 @@ $initials = mb_strtoupper(mb_substr($paciente->nombre,0,1).mb_substr($paciente->
                         <i class="fa-solid fa-plus"></i> Nueva nota
                     </a>
                 </div>
+            </div>
+        </div>
+
+        {{-- Documentos --}}
+        <div class="sec-card">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:#7c3aed"><i class="fa-solid fa-folder-open"></i></div>
+                <div>
+                    <p class="sec-title">Documentos</p>
+                    <p class="sec-subtitle">{{ $paciente->documentos()->count() }} archivo(s)</p>
+                </div>
+            </div>
+            <div class="sec-body">
+                <a href="{{ route('documentos.index', $paciente->id_paciente) }}" class="btn-prev text-decoration-none">
+                    <i class="fa-solid fa-folder-open"></i> Ver documentos
+                </a>
             </div>
         </div>
 

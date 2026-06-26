@@ -77,6 +77,11 @@ class Paciente extends Model
         return $this->hasMany(PacienteMedicamento::class, 'id_paciente', 'id_paciente');
     }
 
+    public function documentos(): HasMany
+    {
+        return $this->hasMany(PacienteDocumento::class, 'id_paciente', 'id_paciente');
+    }
+
     /* ── Accesores ───────────────────────────────────────────────────────── */
 
     public function getNombreCompletoAttribute(): string

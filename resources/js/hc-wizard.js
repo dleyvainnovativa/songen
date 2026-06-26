@@ -13,7 +13,8 @@
 
 import App from './app.js';
 
-const TOTAL = 4;
+// Total de pasos: lo fija la vista (3 si el tipo no tiene extensión, 4 si la tiene).
+let TOTAL = 4;
 
 const hcWizard = {
     step: 1,
@@ -48,9 +49,6 @@ const hcWizard = {
 
     /* ── Bool toggle (bool-card) ─────────────────────────────────────────── */
     toggleBool(card, hiddenId, detalleId = null) {
-        console.log(card);
-        console.log( hiddenId);
-        console.log(detalleId);
         const hidden = document.getElementById(hiddenId);
         const on = hidden.value === '1';
         const nuevo = !on;
@@ -61,7 +59,6 @@ const hcWizard = {
         // Campo de detalle asociado (se muestra/oculta).
         if (detalleId) {
             const det = document.getElementById(detalleId);
-            console.log(det);
             if (det) {
                 det.classList.toggle('campo-oculto', !nuevo);
                 if (!nuevo) det.value = '';
@@ -138,7 +135,8 @@ const hcWizard = {
         App.clearErrors(form);
 
         const btn = document.getElementById('btn-save');
-        App.loading(btn, true, 'Guardando…');
+        App.loading(btn, true, '…');
+        // App.loading(btn, true, 'Guardando…');
 
         const payload = hcWizard._buildPayload(form);
         const pacienteId = form.dataset.paciente;
@@ -210,6 +208,9 @@ App.hcWizard = hcWizard;
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('hc-form');
     if (!form) return;
+
+    // Número real de pasos (3 sin extensión, 4 con extensión).
+    TOTAL = parseInt(form.dataset.total, 10) || 4;
 
     form.addEventListener('submit', hcWizard.submit);
 

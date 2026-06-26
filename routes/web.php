@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuditoriaController;
 use App\Http\Controllers\Auth\FirebaseAuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\HistoriaClinicaPageController;
 use App\Http\Controllers\ImpresionController;
 use App\Http\Controllers\NotaMedicaPageController;
@@ -60,6 +61,11 @@ Route::middleware('firebase')->group(function () {
     Route::get('/pacientes/{paciente}/notas/{nota}',       [NotaMedicaPageController::class, 'show'])->name('notas.show');
     Route::get('/pacientes/{paciente}/notas/{nota}/edit',  [NotaMedicaPageController::class, 'edit'])->name('notas.edit');
     Route::get('/pacientes/{paciente}/notas/{nota}/imprimir', [ImpresionController::class, 'nota'])->name('notas.imprimir');
+
+    // Documentos del paciente
+    Route::get('/pacientes/{paciente}/documentos',  [DocumentoController::class, 'index'])->name('documentos.index');
+    Route::post('/pacientes/{paciente}/documentos', [DocumentoController::class, 'store'])->name('documentos.store');
+    Route::post('/pacientes/{paciente}/documentos/{documento}/eliminar', [DocumentoController::class, 'destroy'])->name('documentos.destroy');
 });
 
 /* ── Zona admin (rol_sistema = admin) ───────────────────────────────────── */

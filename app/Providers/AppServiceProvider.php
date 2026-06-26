@@ -10,6 +10,7 @@ use App\Models\NotaMedica;
 use App\Models\NotaQuirurgica;
 use App\Models\Paciente;
 use App\Models\PacienteContactoEmergencia;
+use App\Models\PacienteDocumento;
 use App\Models\PacienteMedicamento;
 use App\Observers\AuditableObserver;
 use Illuminate\Pagination\Paginator;
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         NotaQuirurgica::class,
         PacienteContactoEmergencia::class,
         PacienteMedicamento::class,
+        PacienteDocumento::class,
     ];
 
     public function register(): void

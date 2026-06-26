@@ -41,7 +41,7 @@ class StorePacienteRequest extends FormRequest
             'cp'                 => ['nullable', 'string', 'size:5'],
             'telefono'           => ['nullable', 'string', 'max:15'],
             'email'              => ['nullable', 'email', 'max:120'],
-            'tipo_paciente'      => ['required', Rule::in(['Quirúrgico', 'Neurológico', 'Geriátrico'])],
+            'tipo_paciente'      => ['required', Rule::in(['Quirúrgico', 'Neurológico', 'Geriátrico', 'Otro'])],
             'id_tipo_sangre'     => ['nullable', 'integer', 'exists:cat_tipos_sangre,id_tipo_sangre'],
             'alergias_conocidas' => ['nullable', 'string'],
 

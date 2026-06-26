@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('email', 120)->nullable();
 
             // Clasificación del paciente (tabla única, herencia por extensión)
-            $table->enum('tipo_paciente', ['Quirúrgico', 'Neurológico', 'Geriátrico']);
+            $table->enum('tipo_paciente', ['Quirúrgico', 'Neurológico', 'Geriátrico', 'Otro']);
 
             // Datos clínicos generales
             $table->unsignedTinyInteger('id_tipo_sangre')->nullable();
