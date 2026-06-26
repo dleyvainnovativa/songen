@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icon/apple-touch-icon.png')}}" />
     <meta name="apple-mobile-web-app-title" content="Tagliare" />
     <link rel="manifest" href="{{asset('img/icon/site.webmanifest')}}" />
-    <title>@yield('title', 'Fisio Clínica')</title>
+    <title>@yield('title', 'Songen')</title>
 
     {{-- Fuentes: DM Sans (UI) · DM Serif Display (marca) · JetBrains Mono (datos) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +57,7 @@
 
         <div class="top-bar-left">
             <a href="{{ url('/') }}" class="brand">
-                <img src="{{ asset('img/logo.png') }}" alt="Fisio Clínica" class="brand-logo">
+                <img src="{{ asset('img/logo.png') }}" alt="Songen" class="brand-logo">
             </a>
         </div>
 

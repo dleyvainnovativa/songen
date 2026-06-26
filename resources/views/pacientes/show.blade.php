@@ -9,7 +9,7 @@
 --}}
 @extends('main')
 
-@section('title', $paciente->nombre_completo . ' · Fisio Clínica')
+@section('title', $paciente->nombre_completo . ' · Songen')
 
 @section('content')
 @php

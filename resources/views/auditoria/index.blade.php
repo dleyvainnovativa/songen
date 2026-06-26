@@ -4,7 +4,7 @@
 --}}
 @extends('main')
 
-@section('title', 'Auditoría · Fisio Clínica')
+@section('title', 'Auditoría · Songen')
 
 @section('content')
 <div class="mb-3">

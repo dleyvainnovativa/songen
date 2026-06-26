@@ -4,7 +4,7 @@
 --}}
 @extends('main')
 
-@section('title', 'Inicio · Fisio Clínica')
+@section('title', 'Inicio · Songen')
 
 @section('content')
 @php($u = auth()->user())

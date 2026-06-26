@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     @vite(['resources/css/theme.css'])
 </head>
+
 <body class="print-body">
 
     <div class="print-toolbar no-print">
@@ -22,7 +24,7 @@
     <div class="print-sheet">
         {{-- Encabezado del documento --}}
         <div class="print-head">
-            <img src="{{ asset('img/logo.png') }}" alt="Fisio Clínica" class="print-logo">
+            <img src="{{ asset('img/logo.png') }}" alt="Songen" class="print-logo">
             <div class="print-head-meta">
                 <div>Impreso: <span class="mono">{{ now()->format('d/m/Y H:i') }}</span></div>
                 <div>Por: {{ auth()->user()->nombre_completo ?? '—' }}</div>
@@ -32,9 +34,10 @@
         @yield('print-content')
 
         <div class="print-foot">
-            Documento generado por Fisio Clínica · Confidencial
+            Documento generado por Songen · Confidencial
         </div>
     </div>
 
 </body>
+
 </html>
