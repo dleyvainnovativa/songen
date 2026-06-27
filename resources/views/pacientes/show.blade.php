@@ -49,6 +49,17 @@ $initials = mb_strtoupper(mb_substr($paciente->nombre,0,1).mb_substr($paciente->
         <a href="{{ route('pacientes.edit', $paciente->id_paciente) }}" class="btn-prev text-decoration-none">
             <i class="fa-solid fa-pen"></i> Editar
         </a>
+        @if($paciente->activo)
+        <button type="button" class="btn-prev" id="btn-archivar"
+            onclick="App.pacShow.archivar('{{ $paciente->id_paciente }}')">
+            <i class="fa-solid fa-box-archive"></i> Archivar
+        </button>
+        @else
+        <button type="button" class="btn-next" id="btn-reactivar"
+            onclick="App.pacShow.reactivar('{{ $paciente->id_paciente }}')">
+            <i class="fa-solid fa-rotate-left"></i> Reactivar
+        </button>
+        @endif
     </div>
 </div>
 
@@ -214,3 +225,7 @@ $initials = mb_strtoupper(mb_substr($paciente->nombre,0,1).mb_substr($paciente->
     </div>
 </div>
 @endsection
+
+@push('scripts')
+@vite('resources/js/pacientes-archive.js')
+@endpush

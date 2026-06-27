@@ -1317,6 +1317,63 @@ a { color: var(--teal-dark); }
 
 .audit-card { padding: .85rem 1rem; }
 
+/* ── MODAL GENÉRICO (reutilizable: medicamentos, establecimientos, personal) ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1070;
+    padding: 1rem;
+    animation: fadeUp .15s ease;
+}
+.modal-box {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+.modal-title { font-size: 1rem; font-weight: 700; color: var(--slate); margin: 0; }
+.modal-close {
+    background: transparent;
+    border: none;
+    color: var(--slate-mid);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: .25rem;
+}
+.modal-close:hover { color: var(--slate); }
+.modal-box form { padding: 1.25rem; }
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: .6rem;
+    margin-top: 1.5rem;
+}
+
+/* Tarjeta de catálogo en móvil (medicamentos, etc.) */
+.med-card {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+}
+
+/* Utilidad: permite truncar texto dentro de flex (Bootstrap no la trae) */
+.min-w-0 { min-width: 0; }
+
 /* ── DOCUMENTOS ─────────────────────────────────────────────────────────── */
 .dropzone {
     display: flex;

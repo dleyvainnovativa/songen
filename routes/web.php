@@ -4,8 +4,10 @@ use App\Http\Controllers\AuditoriaController;
 use App\Http\Controllers\Auth\FirebaseAuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\EstablecimientoPageController;
 use App\Http\Controllers\HistoriaClinicaPageController;
 use App\Http\Controllers\ImpresionController;
+use App\Http\Controllers\MedicamentoPageController;
 use App\Http\Controllers\NotaMedicaPageController;
 use App\Http\Controllers\PacientePageController;
 use Illuminate\Support\Facades\Route;
@@ -66,9 +68,15 @@ Route::middleware('firebase')->group(function () {
     Route::get('/pacientes/{paciente}/documentos',  [DocumentoController::class, 'index'])->name('documentos.index');
     Route::post('/pacientes/{paciente}/documentos', [DocumentoController::class, 'store'])->name('documentos.store');
     Route::post('/pacientes/{paciente}/documentos/{documento}/eliminar', [DocumentoController::class, 'destroy'])->name('documentos.destroy');
+
+    // Catálogo de medicamentos (lectura para todos; gestión solo admin más abajo)
+    Route::get('/medicamentos', [MedicamentoPageController::class, 'index'])->name('medicamentos.index');
 });
 
 /* ── Zona admin (rol_sistema = admin) ───────────────────────────────────── */
 Route::middleware('firebase:admin')->group(function () {
     Route::get('/auditoria', [AuditoriaController::class, 'index'])->name('auditoria.index');
+
+    // Establecimientos (gestión completa; solo admin)
+    Route::get('/establecimientos', [EstablecimientoPageController::class, 'index'])->name('establecimientos.index');
 });

@@ -44,7 +44,6 @@
 
     {{-- ── Top bar ─────────────────────────────────────────────────────────── --}}
     <header class="top-bar">
-        <!-- <div class="top-bar-div"> -->
         @auth
         @php($u = auth()->user())
         @php($ini = mb_strtoupper(mb_substr($u->nombre,0,1).mb_substr($u->primer_apellido,0,1)))
@@ -74,7 +73,17 @@
                 <i class="fa-solid fa-users"></i>
                 <span>Pacientes</span>
             </a>
+            <a href="{{ route('medicamentos.index') }}"
+                class="top-nav-link {{ request()->routeIs('medicamentos.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medicamentos</span>
+            </a>
             @if($u->esAdmin())
+            <a href="{{ route('establecimientos.index') }}"
+                class="top-nav-link {{ request()->routeIs('establecimientos.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-hospital"></i>
+                <span>Clínicas</span>
+            </a>
             <a href="{{ route('auditoria.index') }}"
                 class="top-nav-link {{ request()->routeIs('auditoria.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-clipboard-list"></i>
@@ -117,7 +126,6 @@
             </div>
         </div>
         @endauth
-        <!-- </div> -->
     </header>
 
     @auth
@@ -147,7 +155,15 @@
                 class="offcanvas-link {{ request()->routeIs('pacientes.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-users"></i> Pacientes
             </a>
+            <a href="{{ route('medicamentos.index') }}"
+                class="offcanvas-link {{ request()->routeIs('medicamentos.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-pills"></i> Medicamentos
+            </a>
             @if($u->esAdmin())
+            <a href="{{ route('establecimientos.index') }}"
+                class="offcanvas-link {{ request()->routeIs('establecimientos.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-hospital"></i> Clínicas
+            </a>
             <a href="{{ route('auditoria.index') }}"
                 class="offcanvas-link {{ request()->routeIs('auditoria.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-clipboard-list"></i> Auditoría

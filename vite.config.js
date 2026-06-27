@@ -9,7 +9,10 @@ export default defineConfig({
             input: ['resources/css/theme.css', 'resources/js/app.js',
 'resources/js/pacientes-form.js',
 'resources/js/hc-wizard.js',
-'resources/js/notas-form.js'
+'resources/js/notas-form.js',
+'resources/js/medicamentos.js',
+'resources/js/establecimientos.js',
+'resources/js/pacientes-archive.js',
 
             ],
             refresh: true,

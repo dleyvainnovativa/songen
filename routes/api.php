@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\EstablecimientoApiController;
 use App\Http\Controllers\Api\HistoriaClinicaApiController;
+use App\Http\Controllers\Api\MedicamentoApiController;
 use App\Http\Controllers\Api\NotaMedicaApiController;
 use App\Http\Controllers\Api\PacienteApiController;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +39,16 @@ Route::middleware('firebase')->group(function () {
     Route::post('/pacientes/{paciente}/notas',                [NotaMedicaApiController::class, 'store'])->name('api.notas.store');
     Route::put('/pacientes/{paciente}/notas/{nota}',          [NotaMedicaApiController::class, 'update'])->name('api.notas.update');
     Route::post('/pacientes/{paciente}/notas/{nota}/firmar',  [NotaMedicaApiController::class, 'firmar'])->name('api.notas.firmar');
+});
+
+/* ── Gestión de catálogos (solo admin) ──────────────────────────────────── */
+Route::middleware('firebase:admin')->group(function () {
+    Route::post('/medicamentos',                       [MedicamentoApiController::class, 'store'])->name('api.medicamentos.store');
+    Route::put('/medicamentos/{medicamento}',          [MedicamentoApiController::class, 'update'])->name('api.medicamentos.update');
+    Route::delete('/medicamentos/{medicamento}',       [MedicamentoApiController::class, 'destroy'])->name('api.medicamentos.destroy');
+    Route::post('/medicamentos/{medicamento}/reactivar', [MedicamentoApiController::class, 'reactivar'])->name('api.medicamentos.reactivar');
+
+    Route::post('/establecimientos',                      [EstablecimientoApiController::class, 'store'])->name('api.establecimientos.store');
+    Route::put('/establecimientos/{establecimiento}',     [EstablecimientoApiController::class, 'update'])->name('api.establecimientos.update');
+    Route::delete('/establecimientos/{establecimiento}',  [EstablecimientoApiController::class, 'destroy'])->name('api.establecimientos.destroy');
 });
