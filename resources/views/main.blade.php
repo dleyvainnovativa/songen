@@ -79,6 +79,11 @@
                 <span>Medicamentos</span>
             </a>
             @if($u->esAdmin())
+            <a href="{{ route('personal.index') }}"
+                class="top-nav-link {{ request()->routeIs('personal.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Personal</span>
+            </a>
             <a href="{{ route('establecimientos.index') }}"
                 class="top-nav-link {{ request()->routeIs('establecimientos.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-hospital"></i>
@@ -160,6 +165,10 @@
                 <i class="fa-solid fa-pills"></i> Medicamentos
             </a>
             @if($u->esAdmin())
+            <a href="{{ route('personal.index') }}"
+                class="offcanvas-link {{ request()->routeIs('personal.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-user-doctor"></i> Personal
+            </a>
             <a href="{{ route('establecimientos.index') }}"
                 class="offcanvas-link {{ request()->routeIs('establecimientos.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-hospital"></i> Clínicas

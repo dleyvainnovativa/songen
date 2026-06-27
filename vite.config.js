@@ -13,6 +13,7 @@ export default defineConfig({
 'resources/js/medicamentos.js',
 'resources/js/establecimientos.js',
 'resources/js/pacientes-archive.js',
+'resources/js/personal.js',
 
             ],
             refresh: true,

@@ -1374,6 +1374,26 @@ a { color: var(--teal-dark); }
 /* Utilidad: permite truncar texto dentro de flex (Bootstrap no la trae) */
 .min-w-0 { min-width: 0; }
 
+/* ── Bloque de acceso Firebase (personal médico) ────────────────────────── */
+.acceso-box {
+    background: var(--slate-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: .85rem 1rem;
+}
+.bool-card-inline {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--slate);
+    margin: 0;
+}
+.bool-card-inline input { width: 16px; height: 16px; cursor: pointer; }
+.bool-card-inline i { color: var(--teal); }
+
 /* ── DOCUMENTOS ─────────────────────────────────────────────────────────── */
 .dropzone {
     display: flex;

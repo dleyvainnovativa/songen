@@ -10,6 +10,7 @@ use App\Http\Controllers\ImpresionController;
 use App\Http\Controllers\MedicamentoPageController;
 use App\Http\Controllers\NotaMedicaPageController;
 use App\Http\Controllers\PacientePageController;
+use App\Http\Controllers\PersonalMedicoPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,4 +80,7 @@ Route::middleware('firebase:admin')->group(function () {
 
     // Establecimientos (gestión completa; solo admin)
     Route::get('/establecimientos', [EstablecimientoPageController::class, 'index'])->name('establecimientos.index');
+
+    // Personal médico (gestión completa; solo admin)
+    Route::get('/personal', [PersonalMedicoPageController::class, 'index'])->name('personal.index');
 });

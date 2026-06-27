@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\HistoriaClinicaApiController;
 use App\Http\Controllers\Api\MedicamentoApiController;
 use App\Http\Controllers\Api\NotaMedicaApiController;
 use App\Http\Controllers\Api\PacienteApiController;
+use App\Http\Controllers\Api\PersonalMedicoApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,4 +52,9 @@ Route::middleware('firebase:admin')->group(function () {
     Route::post('/establecimientos',                      [EstablecimientoApiController::class, 'store'])->name('api.establecimientos.store');
     Route::put('/establecimientos/{establecimiento}',     [EstablecimientoApiController::class, 'update'])->name('api.establecimientos.update');
     Route::delete('/establecimientos/{establecimiento}',  [EstablecimientoApiController::class, 'destroy'])->name('api.establecimientos.destroy');
+
+    Route::post('/personal',                 [PersonalMedicoApiController::class, 'store'])->name('api.personal.store');
+    Route::put('/personal/{personal}',       [PersonalMedicoApiController::class, 'update'])->name('api.personal.update');
+    Route::delete('/personal/{personal}',    [PersonalMedicoApiController::class, 'destroy'])->name('api.personal.destroy');
+    Route::post('/personal/{personal}/reactivar', [PersonalMedicoApiController::class, 'reactivar'])->name('api.personal.reactivar');
 });
